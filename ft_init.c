@@ -14,7 +14,6 @@
 
 static void	ft_init(t_env *e)
 {
-	e->max_it = 256;
 	e->zoom = 400;
 	e->offset.x = WIN_WIDTH / 2;
 	e->offset.y = WIN_HEIGHT / 2;

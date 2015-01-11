@@ -78,6 +78,7 @@ void		ft_screenloop(t_env *e, t_complex z)
 int				ft_init_mandelbrot(t_env *e)
 {
 	e->zoom = 50;
+	e->max_it = 252;
 	e->fractal = ft_mandelbrot;
 	return (0);
 }
@@ -86,7 +87,7 @@ int				ft_init_julia(t_env *e)
 {
 	e->z.x = -0.8;
 	e->z.y = 0.156;
-	e->zoom = 80;
-	e->fractal = ft_julia;
+	e->max_it = 10000;
+	e->zoom = 80;	e->fractal = ft_julia;
 	return (0);
 }

@@ -17,6 +17,7 @@
 # include <mlx.h>
 # include <math.h>
 # include "libft/libft.h"
+
 # define UP 65362
 # define DOWN 65364
 # define LEFT 65361
