@@ -43,19 +43,7 @@ int		ft_tohex(int h, float s, float l)
 	c = (1.0 - fabs(2 * l - 1.0)) * s;
 	x = c * (1.0 - fabs(fmod((h / 60.0), 2) - 1.0));
 	m = l - 0.5 * c;
-	if (h >= 0 && h < 60)
+	if (h >= 0 && h < 360)
 		ft_get_color(&color, (c + m) * 255, (x + m) * 255, (0 + m) * 255);
-	else if (h >= 60 && h < 120)
-		ft_get_color(&color, (x + m) * 255, (c + m) * 255, (0 + m) * 255);
-	else if (h >= 120 && h < 180)
-		ft_get_color(&color, (0 + m) * 255, (c + m) * 255, (x + m) * 255);
-	else if (h >= 180 && h < 240)
-		ft_get_color(&color, (0 + m) * 255, (x + m) * 255, (c + m) * 255);
-	else if (h >= 240 && h < 300)
-		ft_get_color(&color, (x + m) * 255, (0 + m) * 255, (c + m) * 255);
-	else if (h >= 300 && h < 360)
-		ft_get_color(&color, (c + m) * 255, (0 + m) * 255, (x + m) * 255);
-	else
-		ft_get_color(&color, 255, 255, 255);
 	return (color.color);
 }

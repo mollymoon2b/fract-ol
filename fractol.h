@@ -18,6 +18,8 @@
 # include <math.h>
 # include "libft/libft.h"
 
+#include <stdio.h>
+
 typedef union	u_color
 {
 	int			color;
@@ -47,6 +49,7 @@ typedef struct	s_buffer
 
 typedef struct	s_env
 {
+	int			(*function)(struct s_env *e);
 	void		*mlx;
 	void		*win;
 	char		*name;

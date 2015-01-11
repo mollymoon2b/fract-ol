@@ -21,7 +21,7 @@ static int			ft_iterate2(int max_it, t_complex z, t_complex c)
 	i = 0;
 	tmp.x = z.x;
 	tmp.y = z.y;
-	while (i < max_it && (tmp.x * tmp.x + tmp.y * tmp.y) < 4)
+	while (i < max_it && (tmp.x * tmp.x + tmp.y * tmp.y) < 3)
 	{
 		i++;
 		x = tmp.x;
@@ -44,8 +44,8 @@ static void			ft_buff_image2(t_env *e, t_complex z)
 		x = 0;
 		while (x < WIN_WIDTH)
 		{
-			c.x = (x - e->offset.x) * (1 / e->zoom);
-			c.y = (y - e->offset.y) * (1 / e->zoom);
+			c.x = (x - e->offset.x) * (1 / (e->zoom * 5));
+			c.y = (y - e->offset.y) * (1 / (e->zoom * 5));
 			i = ft_iterate2(e->max_it, c, z);
 			ft_put_pixel_to_img(&e->buffer, x, y,
 				ft_tohex(i % 360, 1, 0.5 * (i < e->max_it)));

@@ -44,11 +44,11 @@ static void		ft_buff_image(t_env *e)
 		x = 0;
 		while (x < WIN_WIDTH)
 		{
-			c.x = (x - e->offset.x) * (1 / e->zoom);
-			c.y = (y - e->offset.y) * (1 / e->zoom);
+			c.x = (x - e->offset.x) * (1 / (e->zoom ));
+			c.y = (y - e->offset.y) * (1 / (e->zoom ));
 			i = ft_iterate(e->max_it, c);
 			ft_put_pixel_to_img(&e->buffer, x, y,
-					ft_tohex(i % 360, 1, 0.5 * (i < e->max_it)));
+				ft_tohex(i % 360, 1, 0.5 * (i < e->max_it)));
 			x++;
 		}
 		y++;

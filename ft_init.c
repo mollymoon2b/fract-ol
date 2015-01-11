@@ -12,10 +12,9 @@
 
 #include "fractol.h"
 
-static void	ft_init(t_env *e, char **av)
+static void	ft_init(t_env *e)
 {
-	e->name = av[1];
-	e->max_it = 1024;
+	e->max_it = 1022;
 	e->zoom = 512;
 	e->offset.x = WIN_WIDTH / 2;
 	e->offset.y = WIN_HEIGHT / 2;
@@ -23,15 +22,21 @@ static void	ft_init(t_env *e, char **av)
 	if (e->mlx == NULL)
 		ft_error("Failed to init mlx.");
 	e->win = mlx_new_window(e->mlx, WIN_WIDTH, WIN_HEIGHT, "Fract'ol");
-	if (ft_strequ("mandelbrot", av[1]))
-		mlx_expose_hook(e->win, draw_mandelbrot, e);
-	else if (ft_strequ("julia", av[1]))
-		mlx_expose_hook(e->win, draw_julia, e);
-	else if (ft_strequ("cosinus", av[1]))
-		mlx_expose_hook(e->win, draw_mandelbrot, e);
+	if (ft_strequ("mandelbrot", e->name))
+		e->function = draw_mandelbrot;
+	else if (ft_strequ("julia", e->name))
+		e->function = draw_julia;
+	else if (ft_strequ("cosinus", e->name))
+		e->function = draw_mandelbrot;
 	e->buffer.img = mlx_new_image(e->mlx, WIN_WIDTH, WIN_HEIGHT);
 	e->buffer.data = mlx_get_data_addr(e->buffer.img, &e->buffer.bpp,
 			&e->buffer.line_size, &e->buffer.endian);
+}
+
+int 	expose_hook(t_env *e)
+{
+	e->function(e);
+	return (0);
 }
 
 int			main(int ac, char **av)
@@ -45,9 +50,13 @@ int			main(int ac, char **av)
 	if (!(ft_strequ("mandelbrot", av[1]) || ft_strequ("julia", av[1]) ||
 			ft_strequ("cosinus", av[1])))
 		ft_error("Specify a valid fractal: mandelbrot, julia or cosinus.");
-	ft_init(&e, av);
+	e.name = av[1];
+	ft_init(&e);
+	// mlx_key_hook(e.win, keyboard_event, &e);
+	// mlx_mouse_hook(e.win, mouse_event, &e);
+	mlx_expose_hook(e.win, expose_hook, &e);
 	mlx_key_hook(e.win, keyboard_event, &e);
-	mlx_mouse_hook(e.win, mouse_event, &e);
+	// mlx_hook(e.mlx, 2, 1, keyboard_event, &e);
 	mlx_loop(e.mlx);
 	return (0);
 }
