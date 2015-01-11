@@ -58,7 +58,13 @@ static void		ft_buff_image_julia(t_env *e, t_complex z)
 int				draw_julia(t_env *e)
 {
 	t_complex	z;
+	static int init = 0;
 
+	if (init == 0)
+	{
+		e->zoom = 512;
+		init = 1;
+	}
 	z.x = 0.32;
 	z.y = 0.043;
 	e->zoom = 80;
