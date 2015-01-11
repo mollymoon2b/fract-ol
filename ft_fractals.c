@@ -78,7 +78,7 @@ void		ft_screenloop(t_env *e, t_complex z)
 int				ft_init_mandelbrot(t_env *e)
 {
 	e->zoom = 50;
-	e->max_it = 252;
+	e->max_it = 650;
 	e->fractal = ft_mandelbrot;
 	return (0);
 }
