@@ -62,12 +62,11 @@ int				draw_julia(t_env *e)
 
 	if (init == 0)
 	{
-		e->zoom = 512;
+		e->zoom = 80;
 		init = 1;
 	}
 	z.x = 0.32;
 	z.y = 0.043;
-	e->zoom = 80;
 	ft_buff_image_julia(e, z);
 	mlx_put_image_to_window(e->mlx, e->win, e->buffer.img, 0, 0);
 	return (0);
