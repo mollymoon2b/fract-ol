@@ -28,42 +28,43 @@ int		ft_exposehook(t_env *e)
 int		keyboard_event(int keycode, t_env *e)
 {
 	int update;
-
 	update = 0;
+	(void)e;
 	if (keycode == 65307)
 		exit(0);
-	if (keycode == 65362)
-	{
-		e->offset.y += e->zoom / 8;
-		update = 1;
-	}
-	if (keycode == 65364)
+	if (keycode == UP)
 	{
 		e->offset.y -= e->zoom / 8;
 		update = 1;
 	}
-	if (keycode == 65361)
+	if (keycode == DOWN)
 	{
-		e->offset.x += e->zoom / 8;
+		e->offset.y += e->zoom / 8;
 		update = 1;
 	}
-	if (keycode == 65363)
+	if (keycode == LEFT)
 	{
 		e->offset.x -= e->zoom / 8;
 		update = 1;
 	}
-	if (keycode == 45)
+	if (keycode == RIGHT)
+	{
+		e->offset.x += e->zoom / 8;
+		update = 1;
+	}
+	if (keycode == LESS)
 	{
 		e->zoom *= 9 / 10.0;
 		update = 1;
 	}
-	if (keycode == 61)
+	if (keycode == MORE)
 	{
 		e->zoom *= 10 / 9.0;
 		update = 1;
 	}
 	if (update)
 	{
+		printf("Updating\n");
 		ft_screenloop(e, e->z);
 		mlx_put_image_to_window(e->mlx, e->win, e->buffer.img, 0, 0);
 	}

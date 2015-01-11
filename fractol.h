@@ -6,7 +6,7 @@
 /*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 13:40:54 by ade-bonn          #+#    #+#             */
-/*   Updated: 2015/01/09 15:19:34 by ade-bonn         ###   ########.fr       */
+/*   Updated: 2015/01/12 00:14:21 by ade-bonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,14 @@
 # include <mlx.h>
 # include <math.h>
 # include "libft/libft.h"
+# define UP 65362
+# define DOWN 65364
+# define LEFT 65361
+# define RIGHT 65363
+# define LESS 45
+# define MORE 61
 
-#include <stdio.h>
+# include <stdio.h>
 
 typedef struct	u_color
 {
