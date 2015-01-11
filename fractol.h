@@ -18,8 +18,6 @@
 # include <math.h>
 # include "libft/libft.h"
 
-#include <stdio.h>
-
 typedef union	u_color
 {
 	int			color;

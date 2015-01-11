@@ -35,22 +35,22 @@ int		keyboard_event(int keycode, t_env *e)
 		exit(0);
 	if (keycode == 65362)
 	{
-		e->offset.y += e->zoom / 8;
+		e->offset.y += e->zoom / 4;
 		update = 1;
 	}
 	if (keycode == 65364)
 	{
-		e->offset.y -= e->zoom / 8;
+		e->offset.y -= e->zoom / 4;
 		update = 1;
 	}
 	if (keycode == 65361)
 	{
-		e->offset.x += e->zoom / 8;
+		e->offset.x += e->zoom / 4;
 		update = 1;
 	}
 	if (keycode == 65363)
 	{
-		e->offset.x -= e->zoom / 8;
+		e->offset.x -= e->zoom / 4;
 		update = 1;
 	}
 	if (keycode == 45)

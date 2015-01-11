@@ -29,8 +29,7 @@ void	ft_put_pixel_to_img(t_buffer *buffer, int x, int y, int color)
 	if (y > 0)
 		y -= 1;
 	position = (buffer->line_size * y) + (x * octet);
-	if (ft_memcmp(buffer->data + position, &color, octet) != 0)
-		ft_memcpy(buffer->data + position, &color, octet);
+	ft_memcpy(buffer->data + position, &color, octet);
 }
 
 int		ft_tohex(int h, float s, float l)
