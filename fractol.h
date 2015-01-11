@@ -18,9 +18,10 @@
 # include <math.h>
 # include "libft/libft.h"
 
-typedef union	u_color
+#include <stdio.h>
+
+typedef struct	u_color
 {
-	int			color;
 	char		rgb[4];
 }				t_color;
 
@@ -32,8 +33,8 @@ typedef struct	s_point
 
 typedef struct	s_complex
 {
-	float		x;
-	float		y;
+	double		x;
+	double		y;
 }				t_complex;
 
 typedef struct	s_buffer
@@ -48,6 +49,7 @@ typedef struct	s_buffer
 typedef struct	s_env
 {
 	int			(*function)(struct s_env *e);
+	int			(*fractal)(int max_it, t_complex c, t_complex z);
 	void		*mlx;
 	void		*win;
 	char		*name;
@@ -55,11 +57,10 @@ typedef struct	s_env
 	t_point		offset;
 	int			max_it;
 	t_buffer	buffer;
+	t_complex	z;
+	t_complex	c;
 }				t_env;
 
-void			ft_get_color(t_color *c, char r, char g, char b);
-void			ft_put_pixel_to_img(t_buffer *buffer, int x, int y, int color);
-int				ft_tohex(int h, float s, float l);
 int				main(int ac, char **av);
 void			ft_error(char *s);
 int				ft_exposehook(t_env *e);
@@ -68,4 +69,8 @@ int				mouse_event(int button, int x, int y, t_env *e);
 int				draw_mandelbrot(t_env *e);
 int				draw_julia(t_env *e);
 
+void			ft_put_pixel_to_img(t_buffer *buffer, int x, int y, t_color color);
+t_color			ft_tohex(int h, float s, float l);
+t_color			ft_get_color(char r, char g, char b);
+void		ft_screenloop(t_env *e, t_complex z);
 #endif

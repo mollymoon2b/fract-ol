@@ -1,23 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/09 14:50:55 by ade-bonn          #+#    #+#             */
-/*   Updated: 2015/01/09 15:18:52 by ade-bonn         ###   ########.fr       */
+/*   Created: 2015/01/11 16:01:49 by ade-bonn          #+#    #+#             */
+/*   Updated: 2015/01/11 16:01:49 by ade-bonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static int		ft_iterate(int max_it, t_complex c)
+int		ft_julia(int max_it, t_complex z, t_complex c)
+{
+	int			i;
+	t_complex	tmp;
+	double		x;
+
+	i = 0;
+	tmp.x = z.x;
+	tmp.y = z.y;
+	while (i < max_it && (tmp.x * tmp.x + tmp.y * tmp.y) < 4)
+	{
+		i++;
+		x = tmp.x;
+		tmp.x = tmp.x * tmp.x - tmp.y * tmp.y + c.x;
+		tmp.y = (2 * x * tmp.y) + c.y;
+	}
+	return (i);
+}
+
+int		ft_mandelbrot(int max_it, t_complex c, t_complex z)
 {
 	int			i;
 	t_complex	tmp;
 	float		x;
 
+	z = z;
 	i = 0;
 	tmp.x = 0;
 	tmp.y = 0;
@@ -31,7 +51,7 @@ static int		ft_iterate(int max_it, t_complex c)
 	return (i);
 }
 
-static void		ft_buff_image(t_env *e)
+void		ft_screenloop(t_env *e, t_complex z)
 {
 	int			i;
 	int			x;
@@ -44,9 +64,9 @@ static void		ft_buff_image(t_env *e)
 		x = 0;
 		while (x < WIN_WIDTH)
 		{
-			c.x = (x - e->offset.x) * (1 / (e->zoom ));
-			c.y = (y - e->offset.y) * (1 / (e->zoom ));
-			i = ft_iterate(e->max_it, c);
+			c.x = (x - e->offset.x) * (1 / (e->zoom * 5));
+			c.y = (y - e->offset.y) * (1 / (e->zoom * 5));
+			i = e->fractal(e->max_it, c, z);
 			ft_put_pixel_to_img(&e->buffer, x, y,
 				ft_tohex(i % 360, 1, 0.5 * (i < e->max_it)));
 			x++;
@@ -61,10 +81,28 @@ int				draw_mandelbrot(t_env *e)
 
 	if (init == 0)
 	{
-		e->zoom = 512;
+		e->zoom = 50;
+		e->fractal = ft_mandelbrot;
 		init = 1;
 	}
-	ft_buff_image(e);
-	mlx_put_image_to_window(e->mlx, e->win, e->buffer.img, 0, 0);
+	// ft_screenloop(e, e->z);
+	// mlx_put_image_to_window(e->mlx, e->win, e->buffer.img, 0, 0);
+	return (0);
+}
+
+int				draw_julia(t_env *e)
+{
+	static int init = 0;
+
+	if (init == 0)
+	{
+		e->z.x = -0.8;
+		e->z.y = 0.156;
+		e->zoom = 80;
+		e->fractal = ft_julia;
+		init = 1;
+	}
+	// ft_screenloop(e, e->z);
+	// mlx_put_image_to_window(e->mlx, e->win, e->buffer.img, 0, 0);
 	return (0);
 }

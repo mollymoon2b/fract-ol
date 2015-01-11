@@ -4,10 +4,9 @@ NAME        = fractol
 
 SRCDIR      = ./
 
-SRC         =	fractol.c	\
+SRC         =	ft_images.c	\
 		ft_init.c	\
-		mandelbrot.c	\
-		julia.c  \
+		ft_fractals.c	\
 		ft_keypress.c 
 
 OBJ         = $(SRC:.c=.o)
