@@ -57,6 +57,7 @@ static void		ft_buff_image(t_env *e)
 
 int				draw_mandelbrot(t_env *e)
 {
+	e->zoom = 50;
 	ft_buff_image(e);
 	mlx_put_image_to_window(e->mlx, e->win, e->buffer.img, 0, 0);
 	return (0);

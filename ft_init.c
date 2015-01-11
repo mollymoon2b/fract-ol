@@ -14,8 +14,8 @@
 
 static void	ft_init(t_env *e)
 {
-	e->max_it = 1022;
-	e->zoom = 512;
+	e->max_it = 512;
+	//e->zoom = 512;
 	e->offset.x = WIN_WIDTH / 2;
 	e->offset.y = WIN_HEIGHT / 2;
 	e->mlx = mlx_init();
@@ -52,11 +52,8 @@ int			main(int ac, char **av)
 		ft_error("Specify a valid fractal: mandelbrot, julia or cosinus.");
 	e.name = av[1];
 	ft_init(&e);
-	// mlx_key_hook(e.win, keyboard_event, &e);
-	// mlx_mouse_hook(e.win, mouse_event, &e);
 	mlx_expose_hook(e.win, expose_hook, &e);
 	mlx_key_hook(e.win, keyboard_event, &e);
-	// mlx_hook(e.mlx, 2, 1, keyboard_event, &e);
 	mlx_loop(e.mlx);
 	return (0);
 }

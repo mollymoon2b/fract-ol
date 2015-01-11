@@ -12,16 +12,16 @@
 
 #include "fractol.h"
 
-static int			ft_iterate2(int max_it, t_complex z, t_complex c)
+static int		ft_iterate2(int max_it, t_complex z, t_complex c)
 {
-	int				i;
-	t_complex		tmp;
-	float			x;
+	int			i;
+	t_complex	tmp;
+	float		x;
 
 	i = 0;
 	tmp.x = z.x;
 	tmp.y = z.y;
-	while (i < max_it && (tmp.x * tmp.x + tmp.y * tmp.y) < 3)
+	while (i < max_it && (tmp.x * tmp.x + tmp.y * tmp.y) < 4)
 	{
 		i++;
 		x = tmp.x;
@@ -31,12 +31,12 @@ static int			ft_iterate2(int max_it, t_complex z, t_complex c)
 	return (i);
 }
 
-static void			ft_buff_image2(t_env *e, t_complex z)
+static void		ft_buff_image2(t_env *e, t_complex z)
 {
-	int				i;
-	int				x;
-	int				y;
-	t_complex		c;
+	int			i;
+	int			x;
+	int			y;
+	t_complex	c;
 
 	y = 0;
 	while (y < WIN_HEIGHT)
@@ -55,12 +55,13 @@ static void			ft_buff_image2(t_env *e, t_complex z)
 	}
 }
 
-int					draw_julia(t_env *e)
+int				draw_julia(t_env *e)
 {
-	t_complex		z;
+	t_complex	z;
 
 	z.x = 0.32;
 	z.y = 0.043;
+	e->zoom = 80;
 	ft_buff_image2(e, z);
 	mlx_put_image_to_window(e->mlx, e->win, e->buffer.img, 0, 0);
 	return (0);
