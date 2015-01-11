@@ -75,34 +75,18 @@ void		ft_screenloop(t_env *e, t_complex z)
 	}
 }
 
-int				draw_mandelbrot(t_env *e)
+int				ft_init_mandelbrot(t_env *e)
 {
-	static int init = 0;
-
-	if (init == 0)
-	{
-		e->zoom = 50;
-		e->fractal = ft_mandelbrot;
-		init = 1;
-	}
-	// ft_screenloop(e, e->z);
-	// mlx_put_image_to_window(e->mlx, e->win, e->buffer.img, 0, 0);
+	e->zoom = 50;
+	e->fractal = ft_mandelbrot;
 	return (0);
 }
 
-int				draw_julia(t_env *e)
+int				ft_init_julia(t_env *e)
 {
-	static int init = 0;
-
-	if (init == 0)
-	{
-		e->z.x = -0.8;
-		e->z.y = 0.156;
-		e->zoom = 80;
-		e->fractal = ft_julia;
-		init = 1;
-	}
-	// ft_screenloop(e, e->z);
-	// mlx_put_image_to_window(e->mlx, e->win, e->buffer.img, 0, 0);
+	e->z.x = -0.8;
+	e->z.y = 0.156;
+	e->zoom = 80;
+	e->fractal = ft_julia;
 	return (0);
 }

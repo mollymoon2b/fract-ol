@@ -66,11 +66,13 @@ void			ft_error(char *s);
 int				ft_exposehook(t_env *e);
 int				keyboard_event(int keycode, t_env *e);
 int				mouse_event(int button, int x, int y, t_env *e);
-int				draw_mandelbrot(t_env *e);
-int				draw_julia(t_env *e);
+// int				draw_mandelbrot(t_env *e);
+// int				draw_julia(t_env *e);
 
 void			ft_put_pixel_to_img(t_buffer *buffer, int x, int y, t_color color);
 t_color			ft_tohex(int h, float s, float l);
 t_color			ft_get_color(char r, char g, char b);
-void		ft_screenloop(t_env *e, t_complex z);
+void			ft_screenloop(t_env *e, t_complex z);
+int				ft_init_mandelbrot(t_env *e);
+int				ft_init_julia(t_env *e);
 #endif

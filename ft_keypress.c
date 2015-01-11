@@ -30,7 +30,6 @@ int		keyboard_event(int keycode, t_env *e)
 	int update;
 
 	update = 0;
-	(void)e;
 	if (keycode == 65307)
 		exit(0);
 	if (keycode == 65362)
@@ -65,7 +64,6 @@ int		keyboard_event(int keycode, t_env *e)
 	}
 	if (update)
 	{
-		printf("Updating\n");
 		ft_screenloop(e, e->z);
 		mlx_put_image_to_window(e->mlx, e->win, e->buffer.img, 0, 0);
 	}
