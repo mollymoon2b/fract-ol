@@ -25,6 +25,12 @@ int		ft_exposehook(t_env *e)
 	return (0);
 }
 
+void	ft_setinit(t_env *e)
+{
+	e->init.real = e->center.real - WIN_WIDTH * e->steps.real;
+	e->init.imag = e->center.imag - WIN_HEIGHT * e->steps.imag;
+}
+
 int		keyboard_event(int keycode, t_env *e)
 {
 	int update;
@@ -32,40 +38,33 @@ int		keyboard_event(int keycode, t_env *e)
 	(void)e;
 	if (keycode == 65307)
 		exit(0);
+	if (keycode == UP || keycode == DOWN || keycode == LEFT || keycode == RIGHT ||
+		keycode == LESS || keycode == MORE)
+		update = 1;
 	if (keycode == UP)
-	{
-		e->offset.y -= e->zoom / 8;
-		update = 1;
-	}
+		e->center.real -= e->steps.real * (WIN_WIDTH / 10);
 	if (keycode == DOWN)
-	{
-		e->offset.y += e->zoom / 8;
-		update = 1;
-	}
+		e->center.real += e->steps.real * (WIN_WIDTH / 10);
 	if (keycode == LEFT)
-	{
-		e->offset.x -= e->zoom / 8;
-		update = 1;
-	}
+		e->center.imag -= e->steps.imag * (WIN_HEIGHT / 10);
 	if (keycode == RIGHT)
-	{
-		e->offset.x += e->zoom / 8;
-		update = 1;
-	}
+		e->center.imag += e->steps.imag * (WIN_HEIGHT / 10);
 	if (keycode == LESS)
 	{
-		e->zoom *= 9 / 10.0;
-		update = 1;
+		e->steps.real *= 9 / 10.0;
+		e->steps.imag *= 9 / 10.0;
 	}
 	if (keycode == MORE)
 	{
-		e->zoom *= 10 / 9.0;
-		update = 1;
+		e->steps.real *= 10 / 9.0;
+		e->steps.imag *= 10 / 9.0;
 	}
 	if (update)
 	{
-		printf("Updating\n");
+		ft_setinit(e);
 		ft_screenloop(e, e->z);
+		printf("Center x = %f, center y = %f\n", e->init.imag, e->init.real);
+		printf("Steps x = %f, steps y = %f\n", e->steps.imag, e->steps.real);
 		mlx_put_image_to_window(e->mlx, e->win, e->buffer.img, 0, 0);
 	}
 	return (0);

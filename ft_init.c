@@ -14,9 +14,10 @@
 
 static void	ft_init(t_env *e)
 {
-	e->zoom = 400;
-	e->offset.x = WIN_WIDTH / 2;
-	e->offset.y = WIN_HEIGHT / 2;
+	// e->max_it = 256;
+	// e->zoom = 400;
+	// e->offset.x = WIN_WIDTH / 2;
+	// e->offset.y = WIN_HEIGHT / 2;
 	e->mlx = mlx_init();
 	if (e->mlx == NULL)
 		ft_error("Failed to init mlx.");
@@ -30,6 +31,7 @@ static void	ft_init(t_env *e)
 	e->buffer.img = mlx_new_image(e->mlx, WIN_WIDTH, WIN_HEIGHT);
 	e->buffer.data = mlx_get_data_addr(e->buffer.img, &e->buffer.bpp,
 			&e->buffer.line_size, &e->buffer.endian);
+	printf("Init\n");
 }
 
 int 	expose_hook(t_env *e)

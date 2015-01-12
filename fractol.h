@@ -17,7 +17,6 @@
 # include <mlx.h>
 # include <math.h>
 # include "libft/libft.h"
-
 # define UP 65362
 # define DOWN 65364
 # define LEFT 65361
@@ -40,8 +39,8 @@ typedef struct	s_point
 
 typedef struct	s_complex
 {
-	double		x;
-	double		y;
+	double		real;
+	double		imag;
 }				t_complex;
 
 typedef struct	s_buffer
@@ -66,6 +65,9 @@ typedef struct	s_env
 	t_buffer	buffer;
 	t_complex	z;
 	t_complex	c;
+	t_complex	init;
+	t_complex	center;
+	t_complex	steps;
 }				t_env;
 
 int				main(int ac, char **av);
@@ -79,4 +81,6 @@ t_color			ft_get_color(char r, char g, char b);
 void			ft_screenloop(t_env *e, t_complex z);
 int				ft_init_mandelbrot(t_env *e);
 int				ft_init_julia(t_env *e);
+void			ft_setinit(t_env *e);
+
 #endif
