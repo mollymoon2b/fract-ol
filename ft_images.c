@@ -23,7 +23,7 @@ t_color	ft_get_color(char r, char g, char b)
 	return (c);
 }
 
-void	ft_put_pixel_to_img(t_buffer *buffer, int x, int y, t_color color)
+void	ft_put_pixel(t_buffer *buffer, int x, int y, t_color color)
 {
 	int	octet;
 	char *position;

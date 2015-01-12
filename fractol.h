@@ -24,8 +24,6 @@
 # define LESS 45
 # define MORE 61
 
-# include <stdio.h>
-
 typedef struct	u_color
 {
 	char		rgb[4];
@@ -75,7 +73,7 @@ void			ft_error(char *s);
 int				ft_exposehook(t_env *e);
 int				keyboard_event(int keycode, t_env *e);
 int				mouse_event(int button, int x, int y, t_env *e);
-void			ft_put_pixel_to_img(t_buffer *buffer, int x, int y, t_color color);
+void			ft_put_pixel(t_buffer *buffer, int x, int y, t_color color);
 t_color			ft_tohex(int h, float s, float l);
 t_color			ft_get_color(char r, char g, char b);
 void			ft_screenloop(t_env *e, t_complex z);
