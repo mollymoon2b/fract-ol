@@ -6,7 +6,7 @@
 /*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 14:18:50 by ade-bonn          #+#    #+#             */
-/*   Updated: 2015/01/09 15:35:31 by ade-bonn         ###   ########.fr       */
+/*   Updated: 2015/01/13 09:59:11 by ade-bonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,21 @@ static void	ft_init(t_env *e)
 		ft_init_mandelbrot(e);
 	else if (ft_strequ("julia", e->name))
 		ft_init_julia(e);
+	else if (ft_strequ("dragons", e->name))
+		ft_init_dragons(e);
 	e->buffer.img = mlx_new_image(e->mlx, WIN_WIDTH, WIN_HEIGHT);
 	e->buffer.data = mlx_get_data_addr(e->buffer.img, &e->buffer.bpp,
 			&e->buffer.line_size, &e->buffer.endian);
 }
 
-int 	expose_hook(t_env *e)
+int			expose_hook(t_env *e)
 {
 	ft_screenloop(e, e->z);
 	mlx_put_image_to_window(e->mlx, e->win, e->buffer.img, 0, 0);
 	return (0);
 }
 
-void	ft_error(char *s)
+void		ft_error(char *s)
 {
 	ft_putendl_fd(s, 2);
 	exit(1);
@@ -45,12 +47,12 @@ int			main(int ac, char **av)
 	t_env	*e;
 
 	if (ac < 2)
-		ft_error("Specify a fractal: mandelbrot, julia or cosinus.");
+		ft_error("Specify a fractal: mandelbrot, julia or dragons.");
 	else if (ac > 2)
-		ft_error("Specify a valid fractal: mandelbrot, julia or cosinus.");
+		ft_error("Specify a valid fractal: mandelbrot, julia or dragons.");
 	if (!(ft_strequ("mandelbrot", av[1]) || ft_strequ("julia", av[1]) ||
-			ft_strequ("cosinus", av[1])))
-		ft_error("Specify a valid fractal: mandelbrot, julia or cosinus.");
+			ft_strequ("dragons", av[1])))
+		ft_error("Specify a valid fractal: mandelbrot, julia or dragons.");
 	e = (t_env *)ft_memalloc(sizeof(t_env));
 	e->name = av[1];
 	ft_init(e);

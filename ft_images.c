@@ -6,7 +6,7 @@
 /*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 13:40:37 by ade-bonn          #+#    #+#             */
-/*   Updated: 2015/01/09 15:19:17 by ade-bonn         ###   ########.fr       */
+/*   Updated: 2015/01/13 09:45:18 by ade-bonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_color	ft_get_color(char r, char g, char b)
 {
-	t_color 	c;
+	t_color c;
 
 	c.rgb[3] = 0;
 	c.rgb[2] = r;
@@ -25,8 +25,8 @@ t_color	ft_get_color(char r, char g, char b)
 
 void	ft_put_pixel(t_buffer *buffer, int x, int y, t_color color)
 {
-	int	octet;
-	char *position;
+	int		octet;
+	char	*position;
 
 	octet = buffer->line_size / WIN_WIDTH;
 	if (y > 0)
@@ -37,7 +37,7 @@ void	ft_put_pixel(t_buffer *buffer, int x, int y, t_color color)
 	*(position + 2) = color.rgb[2];
 }
 
-t_color		ft_tohex(int h, float s, float l)
+t_color	ft_tohex(int h, float s, float l)
 {
 	t_color	color;
 	float	c;

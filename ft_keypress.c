@@ -6,13 +6,11 @@
 /*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 13:41:32 by ade-bonn          #+#    #+#             */
-/*   Updated: 2015/01/09 15:20:39 by ade-bonn         ###   ########.fr       */
+/*   Updated: 2015/01/13 09:01:52 by ade-bonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <stdio.h>
-
 
 int		ft_exposehook(t_env *e)
 {
@@ -51,11 +49,12 @@ void	ft_inputs(int keycode, t_env *e)
 int		keyboard_event(int keycode, t_env *e)
 {
 	int update;
+
 	update = 0;
 	(void)e;
 	if (keycode == 65307)
 		exit(0);
-	if (keycode == UP || keycode == DOWN || keycode == LEFT || 
+	if (keycode == UP || keycode == DOWN || keycode == LEFT ||
 		keycode == RIGHT || keycode == LESS || keycode == MORE)
 		update = 1;
 	ft_inputs(keycode, e);

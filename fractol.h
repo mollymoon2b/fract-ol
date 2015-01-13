@@ -6,7 +6,7 @@
 /*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 13:40:54 by ade-bonn          #+#    #+#             */
-/*   Updated: 2015/01/12 00:14:21 by ade-bonn         ###   ########.fr       */
+/*   Updated: 2015/01/13 10:00:43 by ade-bonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define LESS 45
 # define MORE 61
 
-typedef struct	u_color
+typedef struct	s_color
 {
 	char		rgb[4];
 }				t_color;
@@ -79,6 +79,7 @@ t_color			ft_get_color(char r, char g, char b);
 void			ft_screenloop(t_env *e, t_complex z);
 int				ft_init_mandelbrot(t_env *e);
 int				ft_init_julia(t_env *e);
+int				ft_init_dragons(t_env *e);			
 void			ft_setinit(t_env *e);
 
 #endif
