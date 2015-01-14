@@ -6,7 +6,7 @@
 /*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 10:12:49 by ade-bonn          #+#    #+#             */
-/*   Updated: 2015/01/13 10:53:24 by ade-bonn         ###   ########.fr       */
+/*   Updated: 2015/01/14 09:39:44 by ade-bonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,8 @@ int		ft_init_julia(t_env *e)
 	e->z.real = -0.0986;
 	e->steps.real = 0.002497;
 	e->steps.imag = 0.002497;
-	e->center.real = 1.872750;
-	e->center.imag = 1.248500;
+	e->center.real = 0;
+	e->center.imag = 0;
 	ft_setinit(e);
 	e->fractal = ft_julia;
 	return (0);
