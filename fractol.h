@@ -6,7 +6,7 @@
 /*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 13:40:54 by ade-bonn          #+#    #+#             */
-/*   Updated: 2015/01/13 10:00:43 by ade-bonn         ###   ########.fr       */
+/*   Updated: 2015/01/14 11:16:59 by ade-bonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <mlx.h>
 # include <math.h>
 # include "libft/libft.h"
+# include "X11/Xlib.h"
+# include "stdio.h"
+
 # define UP 65362
 # define DOWN 65364
 # define LEFT 65361
@@ -66,6 +69,8 @@ typedef struct	s_env
 	t_complex	init;
 	t_complex	center;
 	t_complex	steps;
+	t_complex	pastpos;
+	int			update;
 }				t_env;
 
 int				main(int ac, char **av);

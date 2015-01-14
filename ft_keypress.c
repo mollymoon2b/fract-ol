@@ -6,7 +6,7 @@
 /*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 13:41:32 by ade-bonn          #+#    #+#             */
-/*   Updated: 2015/01/13 09:01:52 by ade-bonn         ###   ########.fr       */
+/*   Updated: 2015/01/14 11:55:02 by ade-bonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,14 @@ void	ft_inputs(int keycode, t_env *e)
 
 int		keyboard_event(int keycode, t_env *e)
 {
-	int update;
-
-	update = 0;
 	(void)e;
 	if (keycode == 65307)
 		exit(0);
 	if (keycode == UP || keycode == DOWN || keycode == LEFT ||
 		keycode == RIGHT || keycode == LESS || keycode == MORE)
-		update = 1;
+		e->update = 1;
 	ft_inputs(keycode, e);
-	if (update)
-	{
-		ft_setinit(e);
-		ft_screenloop(e, e->z);
-		mlx_put_image_to_window(e->mlx, e->win, e->buffer.img, 0, 0);
-	}
+	printf("Salut\n");
 	return (0);
 }
 

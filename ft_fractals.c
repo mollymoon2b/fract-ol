@@ -6,13 +6,13 @@
 /*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 10:12:49 by ade-bonn          #+#    #+#             */
-/*   Updated: 2015/01/14 09:39:44 by ade-bonn         ###   ########.fr       */
+/*   Updated: 2015/01/14 12:11:15 by ade-bonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		ft_dragons(int max_it, t_complex z, t_complex c)
+int		ft_fractoil(int max_it, t_complex z, t_complex c)
 {
 	int			i;
 	t_complex	tmp;
@@ -81,6 +81,7 @@ void	ft_screenloop(t_env *e, t_complex z)
 	c.imag = e->init.imag;
 	y = 0;
 	c.real = e->init.real;
+	printf("Z : Imag = %f, Real = %f\n", z.imag, z.real);
 	while (y < WIN_HEIGHT)
 	{
 		x = 0;
@@ -112,7 +113,8 @@ int		ft_init_mandelbrot(t_env *e)
 
 int		ft_init_julia(t_env *e)
 {
-	e->max_it = 10000;
+	printf("Init julia\n");
+	e->max_it = 50;
 	e->z.imag = -0.65186;
 	e->z.real = -0.0986;
 	e->steps.real = 0.002497;
@@ -124,9 +126,9 @@ int		ft_init_julia(t_env *e)
 	return (0);
 }
 
-int		ft_init_dragons(t_env *e)
+int		ft_init_fractoil(t_env *e)
 {
-	e->max_it = 100000;
+	e->max_it = 100;
 	e->z.imag = -0.75;
 	e->z.real = -0.00;
 	e->steps.real = 0.01;
