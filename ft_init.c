@@ -42,6 +42,7 @@ int			expose_hook(t_env *e)
 
 int			mousemotion(int x, int y, t_env *e)
 {
+
 	e->z.imag += (x - e->pastpos.imag) / WIN_WIDTH;
 	e->z.real += (y - e->pastpos.real) / WIN_HEIGHT;
 	e->pastpos.imag = x;
@@ -79,6 +80,7 @@ int			main(int ac, char **av)
 	mlx_expose_hook(e->win, expose_hook, e);
 	mlx_key_hook(e->win, keyboard_event, e);
 	mlx_hook(e->win, MotionNotify, PointerMotionMask, &mousemotion, e);
+	 mlx_hook(e->win, ButtonPress, ButtonPressMask, &mouse_event, e);
 	mlx_loop_hook(e->mlx, &ft_refresh, e);
 	mlx_loop(e->mlx);
 	return (0);

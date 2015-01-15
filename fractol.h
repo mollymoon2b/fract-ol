@@ -12,8 +12,8 @@
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
-# define WIN_WIDTH 1500
-# define WIN_HEIGHT 1000
+# define WIN_WIDTH 780
+# define WIN_HEIGHT 540
 # include <mlx.h>
 # include <math.h>
 # include "libft/libft.h"

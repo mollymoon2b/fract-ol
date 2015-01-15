@@ -15,9 +15,9 @@
 int		ft_init_mandelbrot(t_env *e)
 {
 	e->max_it = 100;
-	e->steps.real = 0.003214;
-	e->steps.imag = 0.003214;
-	e->center.real = 0;
+	e->steps.real = 0.007;
+	e->steps.imag = 0.007;
+	e->center.real = -0.8;
 	e->center.imag = 0;
 	ft_setinit(e);
 	e->fractal = ft_mandelbrot;
@@ -29,8 +29,8 @@ int		ft_init_julia(t_env *e)
 	e->max_it = 50;
 	e->z.imag = -0.65186;
 	e->z.real = -0.0986;
-	e->steps.real = 0.002497;
-	e->steps.imag = 0.002497;
+	e->steps.real = 0.001;
+	e->steps.imag = 0.001;
 	e->center.real = 0;
 	e->center.imag = 0;
 	ft_setinit(e);
@@ -43,8 +43,8 @@ int		ft_init_fractoil(t_env *e)
 	e->max_it = 100;
 	e->z.imag = -0.75;
 	e->z.real = -0.00;
-	e->steps.real = 0.0025;
-	e->steps.imag = 0.0025;
+	e->steps.real = 0.001;
+	e->steps.imag = 0.001;
 	e->center.real = 0;
 	e->center.imag = 0;
 	ft_setinit(e);
@@ -57,8 +57,8 @@ int		ft_init_dragon(t_env *e)
 	e->max_it = 100;
 	e->z.imag = -0.45186;
 	e->z.real = -0.0984651;
-	e->steps.real = 0.0025;
-	e->steps.imag = 0.0025;
+	e->steps.real = 0.001;
+	e->steps.imag = 0.001;
 	e->center.real = 0;
 	e->center.imag = 0;
 	ft_setinit(e);

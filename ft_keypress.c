@@ -61,12 +61,15 @@ int		keyboard_event(int keycode, t_env *e)
 void ft_inputs_mouse(int button, t_env *e)
 {
 	if (button == 4)
+	{
 		e->steps.real *= 9 / 10.0;
 		e->steps.imag *= 9 / 10.0;
+	}
 	if (button == 5)
+	{
 		e->steps.real *= 10 / 9.0;
 		e->steps.imag *= 10 / 9.0;				
-
+	}
 }
 
 int		mouse_event(int button, int x, int y, t_env *e)
