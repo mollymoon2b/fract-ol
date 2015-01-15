@@ -5,6 +5,7 @@ CC = gcc
 SRC = ft_init.c \
 		ft_keypress.c \
 		ft_fractals.c \
+		ft_init_fract.c \
 		ft_images.c
 
 CFLAGS = -Wall -Werror -Wextra -I ./includes -I /usr/X11/include

@@ -55,14 +55,26 @@ int		keyboard_event(int keycode, t_env *e)
 		keycode == RIGHT || keycode == LESS || keycode == MORE)
 		e->update = 1;
 	ft_inputs(keycode, e);
-	printf("Salut\n");
 	return (0);
+}
+
+void ft_inputs_mouse(int button, t_env *e)
+{
+	if (button == 4)
+		e->steps.real *= 9 / 10.0;
+		e->steps.imag *= 9 / 10.0;
+	if (button == 5)
+		e->steps.real *= 10 / 9.0;
+		e->steps.imag *= 10 / 9.0;				
+
 }
 
 int		mouse_event(int button, int x, int y, t_env *e)
 {
 	(void)e;
-	(void)button;
+	if (button == 4 || button == 5)
+		e->update = 1;
+	ft_inputs_mouse(button, e);
 	(void)x;
 	(void)y;
 	return (0);

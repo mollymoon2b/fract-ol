@@ -18,7 +18,6 @@
 # include <math.h>
 # include "libft/libft.h"
 # include "X11/Xlib.h"
-# include "stdio.h"
 
 # define UP 65362
 # define DOWN 65364
@@ -84,7 +83,12 @@ t_color			ft_get_color(char r, char g, char b);
 void			ft_screenloop(t_env *e, t_complex z);
 int				ft_init_mandelbrot(t_env *e);
 int				ft_init_julia(t_env *e);
-int				ft_init_dragons(t_env *e);			
+int				ft_init_fractoil(t_env *e);
+int				ft_init_dragon(t_env *e);
+int				ft_fractoil(int max_it, t_complex z, t_complex c);
+int				ft_julia(int max_it, t_complex z, t_complex c);
+int				ft_mandelbrot(int max_it, t_complex z, t_complex c);
+int				ft_dragon(int max_it, t_complex z, t_complex c);
 void			ft_setinit(t_env *e);
 
 #endif

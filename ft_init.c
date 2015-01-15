@@ -24,6 +24,8 @@ static void	ft_init(t_env *e)
 		ft_init_julia(e);
 	else if (ft_strequ("fractoil", e->name))
 		ft_init_fractoil(e);
+	else if (ft_strequ("dragon", e->name))
+		ft_init_dragon(e);
 	e->buffer.img = mlx_new_image(e->mlx, WIN_WIDTH, WIN_HEIGHT);
 	e->buffer.data = mlx_get_data_addr(e->buffer.img, &e->buffer.bpp,
 			&e->buffer.line_size, &e->buffer.endian);
@@ -38,39 +40,23 @@ int			expose_hook(t_env *e)
 	return (0);
 }
 
-void		ft_error(char *s)
-{
-	ft_putendl_fd(s, 2);
-	exit(1);
-}
-
 int			mousemotion(int x, int y, t_env *e)
 {
-//	printf("X = %i, Y = %i\n", x, y);
-//	printf("Past : Imag = %f, Real = %f\n", e->z.imag, e->z.real);
 	e->z.imag += (x - e->pastpos.imag) / WIN_WIDTH;
 	e->z.real += (y - e->pastpos.real) / WIN_HEIGHT;
 	e->pastpos.imag = x;
 	e->pastpos.real = y;
 	e->update = 1;
-//	printf("Trying to update\n");
-//	printf("New  : Imag = %f, Real = %f\n", e->z.imag, e->z.real);
 	return (0);
-	// mlx_hook(e.win, MotionNotify, PointerMotionMask, &edit, &e);
-	e++;
-	x++;
-	y++;
-//	button++;
 }
 
-int		ft_refresh(t_env *e)
+int			ft_refresh(t_env *e)
 {
 	if (e->update)
-    {
-        printf("Updating\n");
+	{
 		ft_setinit(e);
-        ft_screenloop(e, e->z);
-        mlx_put_image_to_window(e->mlx, e->win, e->buffer.img, 0, 0);
+		ft_screenloop(e, e->z);
+		mlx_put_image_to_window(e->mlx, e->win, e->buffer.img, 0, 0);
 		e->update = 0;
 	}
 	return (0);
@@ -81,12 +67,12 @@ int			main(int ac, char **av)
 	t_env	*e;
 
 	if (ac < 2)
-		ft_error("Specify a fractal: mandelbrot, julia or fractoil.");
+		ft_error("Fractal: mandelbrot, julia , dragon or fractoil.");
 	else if (ac > 2)
-		ft_error("Specify a valid fractal: mandelbrot, julia or fractoil.");
-	if (!(ft_strequ("mandelbrot", av[1]) || ft_strequ("julia", av[1]) ||
-			ft_strequ("fractoil", av[1])))
-		ft_error("Specify a valid fractal: mandelbrot, julia or fractoil.");
+		ft_error("Fractal: mandelbrot, dragon, julia or fractoil.");
+	if (!(ft_strequ("mandelbrot", av[1]) || ft_strequ("dragon", av[1]) ||
+		ft_strequ("julia", av[1]) || ft_strequ("fractoil", av[1])))
+		ft_error("Fractal: mandelbrot, dragon or fractoil.");
 	e = (t_env *)ft_memalloc(sizeof(t_env));
 	e->name = av[1];
 	ft_init(e);

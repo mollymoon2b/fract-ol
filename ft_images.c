@@ -55,3 +55,9 @@ t_color	ft_tohex(int h, float s, float l)
 	color.rgb[3] = 0;
 	return (color);
 }
+
+void	ft_error(char *s)
+{
+	ft_putendl_fd(s, 2);
+	exit(1);
+}
