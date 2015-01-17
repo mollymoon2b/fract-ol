@@ -37,6 +37,12 @@ void	ft_put_pixel(t_buffer *buffer, int x, int y, t_color color)
 	*(position + 2) = color.rgb[2];
 }
 
+void	ft_setinit(t_env *e)
+{
+	e->init.real = e->center.real - WIN_HEIGHT / 2 * e->steps.real;
+	e->init.imag = e->center.imag - WIN_WIDTH / 2 * e->steps.imag;
+}
+
 t_color	ft_tohex(int h, float s, float l)
 {
 	t_color	color;

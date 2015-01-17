@@ -18,12 +18,6 @@ int		ft_exposehook(t_env *e)
 	return (0);
 }
 
-void	ft_setinit(t_env *e)
-{
-	e->init.real = e->center.real - WIN_HEIGHT / 2 * e->steps.real;
-	e->init.imag = e->center.imag - WIN_WIDTH / 2 * e->steps.imag;
-}
-
 void	ft_inputs(int keycode, t_env *e)
 {
 	if (keycode == UP)
@@ -58,17 +52,23 @@ int		keyboard_event(int keycode, t_env *e)
 	return (0);
 }
 
-void ft_inputs_mouse(int button, t_env *e)
+void	ft_inputs_mouse(int button, t_env *e)
 {
-	if (button == 4)
+	if (button == 4 || button == 5)
 	{
-		e->steps.real *= 9 / 10.0;
-		e->steps.imag *= 9 / 10.0;
-	}
-	if (button == 5)
-	{
-		e->steps.real *= 10 / 9.0;
-		e->steps.imag *= 10 / 9.0;				
+		e->center.imag += (e->mouse.imag - WIN_WIDTH / 2) / 10 * e->steps.imag;
+		e->center.real += (e->mouse.real - WIN_HEIGHT / 2) / 10 * e->steps.real;
+		if (button == 4)
+		{
+			e->steps.real *= 9 / 10.0;
+			e->steps.imag *= 9 / 10.0;
+		}
+		else
+		{
+			e->steps.real *= 10 / 9.0;
+			e->steps.imag *= 10 / 9.0;
+		}
+		ft_setinit(e);
 	}
 }
 

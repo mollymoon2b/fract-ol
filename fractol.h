@@ -69,6 +69,7 @@ typedef struct	s_env
 	t_complex	center;
 	t_complex	steps;
 	t_complex	pastpos;
+	t_complex	mouse;
 	int			update;
 }				t_env;
 
