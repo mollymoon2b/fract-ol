@@ -38,6 +38,48 @@ int		ft_init_julia(t_env *e)
 	return (0);
 }
 
+int		ft_init_julia3(t_env *e)
+{
+	e->max_it = 50;
+	e->z.imag = -0.65186;
+	e->z.real = -0.0986;
+	e->steps.real = 0.001;
+	e->steps.imag = 0.001;
+	e->center.real = 0;
+	e->center.imag = 0;
+	ft_setinit(e);
+	e->fractal = ft_julia3;
+	return (0);
+}
+
+int		ft_init_julia4(t_env *e)
+{
+	e->max_it = 50;
+	e->z.imag = -0.65186;
+	e->z.real = -0.0986;
+	e->steps.real = 0.001;
+	e->steps.imag = 0.001;
+	e->center.real = 0;
+	e->center.imag = 0;
+	ft_setinit(e);
+	e->fractal = ft_julia4;
+	return (0);
+}
+
+int		ft_init_juliae3(t_env *e)
+{
+	e->max_it = 100;
+	e->z.imag = 0;
+	e->z.real = -0.621;
+	e->steps.real = 0.01;
+	e->steps.imag = 0.01;
+	e->center.real = 0;
+	e->center.imag = 0;
+	ft_setinit(e);
+	e->fractal = ft_juliae3;
+	return (0);
+}
+
 int		ft_init_fractoil(t_env *e)
 {
 	e->max_it = 100;

@@ -91,5 +91,10 @@ int				ft_julia(int max_it, t_complex z, t_complex c);
 int				ft_mandelbrot(int max_it, t_complex z, t_complex c);
 int				ft_dragon(int max_it, t_complex z, t_complex c);
 void			ft_setinit(t_env *e);
-
+int 			ft_julia3(int max_it, t_complex z, t_complex c);
+int				ft_julia4(int max_it, t_complex z, t_complex c);
+int				ft_init_julia3(t_env *e);
+int				ft_init_julia4(t_env *e);
+int				ft_init_juliae3(t_env *e);
+int				ft_juliae3(int max_it, t_complex z, t_complex c);
 #endif

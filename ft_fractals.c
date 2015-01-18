@@ -71,6 +71,74 @@ int		ft_julia(int max_it, t_complex z, t_complex c)
 	return (i);
 }
 
+int		ft_julia3(int max_it, t_complex z, t_complex c)
+{
+	int			i;
+	t_complex	tmp;
+	double		x;
+
+	i = 0;
+	tmp.real = z.real;
+	tmp.imag = z.imag;
+	while (i < max_it && (tmp.real * tmp.real + tmp.imag * tmp.imag) < 4)
+	{
+		i++;
+		x = tmp.real;
+		tmp.real = x * x * x - 3 * x * tmp.imag * tmp.imag + c.real;
+		tmp.imag = 3 * x * x * tmp.imag - tmp.imag * tmp.imag * tmp.imag + c.imag;
+	}
+	return (i);
+}
+
+int		ft_julia4(int max_it, t_complex z, t_complex c)
+{
+	int			i;
+	t_complex	tmp;
+	double		x;
+
+	i = 0;
+	tmp.real = z.real;
+	tmp.imag = z.imag;
+	while (i < max_it && (tmp.real * tmp.real + tmp.imag * tmp.imag) < 4)
+	{
+		i++;
+		x = tmp.real;
+		tmp.real = tmp.real * tmp.real - tmp.imag * tmp.imag;
+		tmp.imag = (2 * x * tmp.imag);
+		tmp.real = tmp.real * tmp.real - tmp.imag * tmp.imag + c.real;
+		tmp.imag = (2 * x * tmp.imag) + c.imag;
+	}
+	return (i);
+}
+
+int		ft_juliae3(int max_it, t_complex z, t_complex c)
+{
+	int			i;
+	t_complex	tmp;
+	double		x;
+	double 		s;
+	double 		d;
+	double 		u;
+
+	i = 0;
+	tmp.real = z.real;
+	tmp.imag = z.imag;
+	while (i < max_it && (tmp.real * tmp.real + tmp.imag * tmp.imag) < 4)
+	{
+		i++;
+		x = tmp.real;
+		tmp.real = x * x * x - 3 * x * tmp.imag * tmp.imag;
+		tmp.imag = 3 * x * x * tmp.imag - tmp.imag * tmp.imag * tmp.imag;
+
+		s = sin(tmp.imag);
+		d = cos(tmp.imag);
+  		u = exp(tmp.real);
+  		tmp.real = u * d + c.real;
+  		tmp.imag = u * s + c.imag;
+	}
+	return (i);
+}
+
 int		ft_mandelbrot(int max_it, t_complex c, t_complex z)
 {
 	int			i;

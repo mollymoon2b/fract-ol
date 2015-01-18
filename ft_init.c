@@ -22,6 +22,12 @@ static void	ft_init(t_env *e)
 		ft_init_mandelbrot(e);
 	else if (ft_strequ("julia", e->name))
 		ft_init_julia(e);
+	else if (ft_strequ("julia3", e->name))
+		ft_init_julia3(e);
+	else if (ft_strequ("julia4", e->name))
+		ft_init_julia4(e);
+	else if (ft_strequ("juliae3", e->name))
+		ft_init_juliae3(e);
 	else if (ft_strequ("fractoil", e->name))
 		ft_init_fractoil(e);
 	else if (ft_strequ("dragon", e->name))
@@ -70,13 +76,13 @@ int			main(int ac, char **av)
 {
 	t_env	*e;
 
-	if (ac < 2)
-		ft_error("Fractal: mandelbrot, julia , dragon or fractoil.");
-	else if (ac > 2)
-		ft_error("Fractal: mandelbrot, dragon, julia or fractoil.");
+	if (ac != 2)
+		ft_error("Fractal: mandelbrot, dragon, julia(3/4/e) or fractoil.");
 	if (!(ft_strequ("mandelbrot", av[1]) || ft_strequ("dragon", av[1]) ||
-		ft_strequ("julia", av[1]) || ft_strequ("fractoil", av[1])))
-		ft_error("Fractal: mandelbrot, dragon or fractoil.");
+		ft_strequ("julia", av[1]) || ft_strequ("julia3", av[1]) || 
+		ft_strequ("julia4", av[1]) || ft_strequ("fractoil", av[1]) ||
+		ft_strequ("juliae3", av[1])))
+		ft_error("Fractal: mandelbrot, dragon, julia(3/4/e) or fractoil.");
 	e = (t_env *)ft_memalloc(sizeof(t_env));
 	e->name = av[1];
 	ft_init(e);
